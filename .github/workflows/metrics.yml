@@ -1,1 +1,63 @@
+name: GitHub Metrics
 
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+  workflow_dispatch:
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate GitHub Metrics
+        uses: lowlighter/metrics@latest
+
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+
+          # =========================
+          # PROFILE
+          # =========================
+          user: Cristiny1
+
+          # =========================
+          # TEMPLATE
+          # =========================
+          template: classic
+
+          # =========================
+          # BASE INFORMATION
+          # =========================
+          base: header, activity, community, repositories, metadata
+
+          # =========================
+          # LANGUAGES
+          # =========================
+          plugin_languages: yes
+          plugin_languages_indepth: yes
+          plugin_languages_limit: 8
+
+          # =========================
+          # ACHIEVEMENTS
+          # =========================
+          plugin_achievements: yes
+          plugin_achievements_display: compact
+
+          # =========================
+          # COMMIT CALENDAR
+          # =========================
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
+
+          # =========================
+          # RECENT ACTIVITY
+          # =========================
+          plugin_activity: yes
+          plugin_activity_limit: 5
+
+          # =========================
+          # STARRED REPOSITORIES
+          # =========================
+          plugin_stars: yes
